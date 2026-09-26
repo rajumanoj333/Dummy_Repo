@@ -14,6 +14,21 @@
   --radius: 12px;
 }
 
+[data-theme="light"] {
+  --bg-color: #f1f5f9;
+  --card-bg: #ffffff;
+  --inner-bg: #f8fafc;
+  --border-color: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --danger: #e11d48;
+  --danger-hover: #be123c;
+  --secondary: #94a3b8;
+  --secondary-hover: #64748b;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,6 +44,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 24px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -39,11 +55,40 @@ body {
   border-radius: var(--radius);
   padding: 32px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .container {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .header {
+  position: relative;
   text-align: center;
   margin-bottom: 28px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--inner-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  border-color: var(--primary);
 }
 
 .badge {
@@ -77,6 +122,7 @@ body {
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card h2 {
@@ -124,6 +170,10 @@ body {
   color: #0b1120;
 }
 
+[data-theme="light"] .btn-primary {
+  color: #ffffff;
+}
+
 .btn-danger {
   background-color: var(--danger);
   color: #ffffff;
@@ -132,6 +182,21 @@ body {
 .btn-secondary {
   background-color: var(--secondary);
   color: #ffffff;
+}
+
+.hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 14px;
+}
+
+.hint code {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: Consolas, Monaco, monospace;
 }
 
 .checklist {
@@ -143,9 +208,9 @@ body {
   align-items: center;
   gap: 10px;
   padding: 8px 0;
-  color: #cbd5e1;
+  color: var(--text-main);
   font-size: 0.95rem;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .checklist li:last-child {
