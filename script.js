@@ -31,5 +31,19 @@ btnReset.addEventListener('click', () => {
   updateDisplay();
 });
 
+// Keyboard Shortcuts Support
+window.addEventListener('keydown', (event) => {
+  if (event.key === '+' || event.key === '=' || event.key === 'ArrowUp') {
+    count++;
+    updateDisplay();
+  } else if (event.key === '-' || event.key === 'ArrowDown') {
+    count--;
+    updateDisplay();
+  } else if (event.key.toLowerCase() === 'r' || event.key === '0') {
+    count = 0;
+    updateDisplay();
+  }
+});
+
 // Initialize on load
 updateDisplay();
